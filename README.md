@@ -122,6 +122,19 @@ result.to_csv(output_csv, index=False)
 result.head()
 ```
 
+### Raw data to flattended data
+
+Before Raw data
+<img width="1076" height="234" alt="image" src="https://github.com/user-attachments/assets/ba927d36-f878-47be-9c2e-2882bc5a7152" />
+
+After
+
+Flattedned data
+
+<img width="1796" height="23" alt="image" src="https://github.com/user-attachments/assets/5747fff8-c3e3-411d-8ada-554ac35a8d7e" />
+
+
+
 ## License
 
 This repository is provided for educational and research purposes.
