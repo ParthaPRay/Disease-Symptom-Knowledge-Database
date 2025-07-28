@@ -133,6 +133,9 @@ Flattedned data
 
 <img width="1796" height="23" alt="image" src="https://github.com/user-attachments/assets/5747fff8-c3e3-411d-8ada-554ac35a8d7e" />
 
+UMLS:C0008031_pain chest,UMLS:C0392680_shortness of breath,UMLS:C0012833_dizziness,UMLS:C0004093_asthenia,UMLS:C0085639_fall,UMLS:C0039070_syncope,UMLS:C0042571_vertigo,UMLS:C0038990_sweat,UMLS:C0700590_sweating increased,UMLS:C0030252_palpitation,UMLS:C0027497_nausea,UMLS:C0002962_angina pectoris,UMLS:C0438716_pressure chest
+
+
 
 
 ## License
