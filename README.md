@@ -146,3 +146,6 @@ UMLS:C0008031_pain chest,UMLS:C0392680_shortness of breath,UMLS:C0012833_dizzine
 MIT
 
 
+## References
+1. https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html
+2. https://github.com/anujdutt9/Disease-Prediction-from-Symptoms
