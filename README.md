@@ -1,6 +1,6 @@
 # Disease-Symptom Data Cleaner and Flattener
 
-This repository provides a Python script for cleaning, normalizing, and flattening disease-symptom datasets [https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html](https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html).
+This repository provides a Python script for cleaning, normalizing, and flattening disease-symptom datasets Unified Medical Language System [(UMLS)][https://www.nlm.nih.gov/research/umls/index.html] specific [https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html](https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html).
 It is designed to process medical data from Excel files (especially those with composite codes separated by `^`), remove unwanted junk characters, and output a clean, analysis-ready CSV.
 
 ## Features
