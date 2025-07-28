@@ -35,7 +35,7 @@ Each row contains a single disease code and its associated symptoms.
 
 1. **Clone this repository** or copy the script into your project.
 
-2. Ensure you have [Python 3.x](https://www.python.org/downloads/) and the following packages installed:
+2. Ensure you have [Python 3.9](https://www.python.org/downloads/) and the following packages installed:
 
    ```bash
    pip install pandas
