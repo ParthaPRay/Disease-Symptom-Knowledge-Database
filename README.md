@@ -15,7 +15,7 @@ It is designed to process medical data from Excel files (especially those with c
 
 ## Input
 
-The script loads raw data from:
+The script loads raw data which is obtained in .xlsx format from https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html](https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html) from below github link:
 
 ```
 https://raw.githubusercontent.com/anujdutt9/Disease-Prediction-from-Symptoms/master/notebook/dataset/raw_data.xlsx
