@@ -130,7 +130,7 @@ Before Raw data
 
 After
 
-Flattened data
+Flattened data (Comma separated)
 
 <img width="1796" height="23" alt="image" src="https://github.com/user-attachments/assets/5747fff8-c3e3-411d-8ada-554ac35a8d7e" />
 
