@@ -1,2 +1,130 @@
-# Disease-Symptom-Knowledge-Database
-This repo shows the coding organizing symptoms in comma separated rows for given disease from Disease-Symptom Knowledge Database based github link
+# Disease-Symptom Data Cleaner and Flattener
+
+This repository provides a Python script for cleaning, normalizing, and flattening disease-symptom datasets.
+It is designed to process medical data from Excel files (especially those with composite codes separated by `^`), remove unwanted junk characters, and output a clean, analysis-ready CSV.
+
+## Features
+
+* **Directly loads medical data** from a GitHub-hosted Excel file
+* **Fills missing disease names** using last valid entry (forward fill)
+* **Removes unnecessary columns** (e.g., occurrence counts)
+* **Eliminates rows with missing symptoms**
+* **Handles composite disease codes**: splits codes joined by `^` into separate records
+* **Removes junk characters** (e.g., `Â`) from disease and symptom columns
+* **Exports a clean, flattened CSV** ready for ML or analytics
+
+## Input
+
+The script loads raw data from:
+
+```
+https://raw.githubusercontent.com/anujdutt9/Disease-Prediction-from-Symptoms/master/notebook/dataset/raw_data.xlsx
+```
+
+## Output
+
+A cleaned and flattened CSV named:
+
+```
+flattened_url.csv
+```
+
+Each row contains a single disease code and its associated symptoms.
+
+## Usage
+
+1. **Clone this repository** or copy the script into your project.
+
+2. Ensure you have [Python 3.x](https://www.python.org/downloads/) and the following packages installed:
+
+   ```bash
+   pip install pandas
+   ```
+
+3. **Run the script**:
+
+   ```bash
+   python script_name.py
+   ```
+
+   (Replace `script_name.py` with your filename.)
+
+4. **Result:**
+   You’ll get a `flattened_url.csv` file in your working directory.
+
+## Example
+
+**Input disease string:**
+
+```
+UMLS:C0376358_malignant neoplasm of prostate^UMLS:C0600139_carcinoma prostate^UMLS:C0600159_carcinoma digitailis
+```
+
+**Becomes three rows:**
+
+```
+UMLS:C0376358_malignant neoplasm of prostate, symptom_1, symptom_2, ...
+UMLS:C0600139_carcinoma prostate, symptom_1, symptom_2, ...
+UMLS:C0600159_carcinoma digitailis, symptom_1, symptom_2, ...
+```
+
+## Full Script
+
+```python
+import pandas as pd
+import re
+
+# Download Excel file directly from GitHub RAW link
+file_url = 'https://raw.githubusercontent.com/anujdutt9/Disease-Prediction-from-Symptoms/master/notebook/dataset/raw_data.xlsx'
+df = pd.read_excel(file_url)
+
+# Fill down Disease names
+df['Disease'] = df['Disease'].ffill()
+
+# Drop 'Count of Disease Occurrence' if exists
+if 'Count of Disease Occurrence' in df.columns:
+    df = df.drop(columns=['Count of Disease Occurrence'])
+
+# Remove rows where Symptom is NaN
+df = df[df['Symptom'].notna()]
+
+# Replace '^' with ',' in symptoms
+df['Symptom'] = df['Symptom'].str.replace('^', ',', regex=False)
+
+# --- Remove junk symbols like Â etc. from Disease and Symptom ---
+def clean_text(text):
+    # Remove any character that is not printable ASCII or common punctuation/space
+    return re.sub(r'[^\x20-\x7E]', '', str(text))
+
+df['Disease'] = df['Disease'].apply(clean_text)
+df['Symptom'] = df['Symptom'].apply(clean_text)
+
+# Prepare new rows for disease splits
+expanded_rows = []
+
+for disease, group in df.groupby('Disease', sort=False):
+    symptoms = ','.join(group['Symptom'])
+    disease_codes = [d.strip() for d in disease.split('^')]
+    for code in disease_codes:
+        expanded_rows.append({'Disease': code, 'Symptom': symptoms})
+
+# Create result DataFrame preserving order
+result = pd.DataFrame(expanded_rows)
+
+# (Optional) Clean junk symbols from the final result again, just in case
+result['Disease'] = result['Disease'].apply(clean_text)
+result['Symptom'] = result['Symptom'].apply(clean_text)
+
+# Save to CSV
+output_csv = 'flattened_url.csv'
+result.to_csv(output_csv, index=False)
+
+result.head()
+```
+
+## License
+
+This repository is provided for educational and research purposes.
+Please check the original dataset’s license for any usage restrictions.
+
+
