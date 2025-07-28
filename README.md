@@ -143,7 +143,6 @@ UMLS:C0008031_pain chest,UMLS:C0392680_shortness of breath,UMLS:C0012833_dizzine
 
 ## License
 
-This repository is provided for educational and research purposes.
-Please check the original dataset’s license for any usage restrictions.
+MIT
 
 
