@@ -44,10 +44,10 @@ Each row contains a single disease code and its associated symptoms.
 3. **Run the script**:
 
    ```bash
-   python script_name.py
+   python flatten.py
    ```
 
-   (Replace `script_name.py` with your filename.)
+
 
 4. **Result:**
    You’ll get a `flattened_url.csv` file in your working directory.
