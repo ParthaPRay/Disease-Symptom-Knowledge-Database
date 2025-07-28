@@ -64,6 +64,8 @@ result['Symptom'] = result['Symptom'].apply(clean_text)
 
 # Save to CSV
 output_csv = 'flattened_url.csv'
+# Save to XLSX
+output_csv = 'flattened_url.xlsx'
 result.to_csv(output_csv, index=False)
 
 result.head()
